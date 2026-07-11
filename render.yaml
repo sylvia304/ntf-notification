@@ -1,0 +1,15 @@
+# Render 部署配置
+# 在 Render 上创建 Web Service 时选择 "Docker" 或直接用这个文件
+
+services:
+  - type: web
+    name: ntfy-notifier
+    env: python
+    region: singapore  # 新加坡离你最近，延迟低
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    envVars:
+      - key: NTFY_TOPIC
+        value: aozihdek
+      - key: NTFY_SERVER
+        value: https://ntfy.sh
